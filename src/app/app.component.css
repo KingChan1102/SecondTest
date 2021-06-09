@@ -1,0 +1,9 @@
+.active{
+    font-weight: bold;
+}
+.nav-link{
+    color: black !important;
+}
+.navbar-toggler:focus{
+    box-shadow: none;
+}

@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color:rgb(35, 0, 54);
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 50rem;
+}
+.form-label{
+    color: honeydew;
+}
+.container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+}
