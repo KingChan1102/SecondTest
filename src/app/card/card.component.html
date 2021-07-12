@@ -1,5 +1,5 @@
 <div class="card h-100">
-    <img src="{{showObj.image}}" class="card-img-top" alt="..." height=175rem>
+    <img src="{{showObj.image}}" class="card-img-top" alt="..." height="330vh">
     <div class="card-body">
         <h5 class="card-title">{{showObj.title}}</h5>
         <p class="card-text">
@@ -11,35 +11,17 @@
         <p class="card-text">
             Year: {{showObj.year}}
         </p>
-        <p class="card-text">
-            Crew: {{showObj.crew}}
-        </p>
+
     </div>
     <div class="card-footer d-flex justify-content-evenly p-0 m-0" style="background: none; border: none;">
-        <button type="button" class="btn btn-primary btn-sm shadow-none">Watch Later</button>
-        <button type="button" class="btn btn-primary btn-sm shadow-none">Add to Favs</button>
-        <button type="button" class="btn btn-primary btn-sm shadow-none" (click)="onSelectId(showObj.id)">Read More</button>
+        <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInWatchLater(showObj.id) === false" (click)="addToWatchLater(showObj)">Watch Later</button>
+        <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInWatchLater(showObj.id) === true" (click)="deleteWatchLater(showObj.id)">remove wl</button>
+        <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInFavs(showObj.id) === false"
+            (click)="addToFavs(showObj)">Add to Favs</button>
+        <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInFavs(showObj.id) === true"
+            (click)="deleteFavs(showObj.id)">delFavs</button>
+        <button type="button" class="btn btn-primary btn-sm shadow-none" (click)="onSelectId(showObj.id)">Read
+            More</button>
     </div>
 </div>
-
-
-<!-- <div class="modal fade " id="exampleModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{showObj.fullTitle}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="ratio ratio-16x9 d-block mx-auto">
-                    <p>{{videoPlayer}}</p>
-                    <iframe class="e2e-iframe-trusted-src" [src]="videoPlayer" allowfullscreen></iframe>
-                  </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div> -->
+<router-outlet></router-outlet>

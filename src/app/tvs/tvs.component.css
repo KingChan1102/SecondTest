@@ -1,0 +1,18 @@
+
+
+.nav-tabs .nav-link {
+    background-color: #ffc107;
+    color: black;
+    font-weight: 700;
+    border: 0
+}
+/* .nav-pills .nav-links.active{
+    background-color: black !important;
+} */
+.nav-tabs .nav-link.active, .nav-tabs .show>.nav-link {
+    color: #ffc107 !important;
+    background-color: black !important;
+}
+.nav-tabs{
+    border-bottom: 2px solid black !important;
+}

@@ -1,24 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import {TratedService} from "../trated.service";
 import { Subscription } from 'rxjs';
-import { TratedService } from '../trated.service';
+
 
 @Component({
-  selector: 'app-tv',
-  templateUrl: './tv.component.html',
-  styleUrls: ['./tv.component.css']
+  selector: 'app-pop-tv',
+  templateUrl: './pop-tv.component.html',
+  styleUrls: ['./pop-tv.component.css']
 })
-export class TvComponent implements OnInit {
-  
+export class PopTvComponent implements OnInit {
+
   mySubscription:Subscription;
   shows:any;
   p=1;
-  constructor(private topTv:TratedService) { 
-    console.log("ho")
-  }
+
+  constructor(private topTv:TratedService) { }
 
   ngOnInit(): void {
-    console.log('hi')
-    this.mySubscription=this.topTv.getUsers().subscribe(
+    this.mySubscription=this.topTv.getPopularTv().subscribe(
       data=>{
         this.shows=data.items;
       },

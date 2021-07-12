@@ -12,4 +12,9 @@ export class TratedService {
   getUsers():Observable <any>{
     return this.hc.get <any>('https://imdb-api.com/en/API/Top250TVs/k_2pm80c04');
   }
+
+  getPopularTv():Observable <any>{
+    return this.hc.get <any>('https://imdb-api.com/en/API/MostPopularTVs/k_2pm80c04')
+  }
+  
 }

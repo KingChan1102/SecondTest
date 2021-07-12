@@ -1,0 +1,15 @@
+#poster{
+    width: 107%;
+
+}
+@media screen and (max-width: 800px) {
+    .trailer{
+        width: 100%;
+        margin: auto;
+    }
+}
+
+div{
+    color: #ffc107;
+}
+
