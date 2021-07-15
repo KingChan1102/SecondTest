@@ -9,14 +9,14 @@ export class YtlinksService {
 
   constructor(private hc:HttpClient) { }
   getYtlink(id:String):Observable <any>{
-    return this.hc.get('https://imdb-api.com/en/API/YouTubeTrailer/k_2pm80c04/'+id);
+    return this.hc.get('https://imdb-api.com/en/API/YouTubeTrailer/k_e4ttl3ui/'+id);
   }
   
   getShowDetails(id:String):Observable <any>{
-    return this.hc.get("https://imdb-api.com/en/API/Title/k_2pm80c04/"+id);
+    return this.hc.get("https://imdb-api.com/en/API/Title/k_e4ttl3ui/"+id);
   }
 
   getEpisodes(id:String,seasonNum:String):Observable <any>{
-    return this.hc.get("https://imdb-api.com/en/API/SeasonEpisodes/k_2pm80c04/"+id+"/"+seasonNum);
+    return this.hc.get("https://imdb-api.com/en/API/SeasonEpisodes/k_e4ttl3ui/"+id+"/"+seasonNum);
   }
 }

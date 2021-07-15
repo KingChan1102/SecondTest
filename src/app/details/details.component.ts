@@ -23,6 +23,8 @@ export class DetailsComponent implements OnInit {
   from: any;
 
   constructor(private ar: ActivatedRoute, private video: YtlinksService, private sanitizer: DomSanitizer, private router: Router,private extras:ExtrasService) {
+
+
     // console.log('hi')
   //   this.router.routeReuseStrategy.shouldReuseRoute = function () {
   //     return false;
@@ -46,29 +48,29 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo(0,0);
 
-    console.log("hi");
-      this.router.routeReuseStrategy.shouldReuseRoute = function () {
-      return false;
-    }
+  //   console.log("hi");
+  //     this.router.routeReuseStrategy.shouldReuseRoute = function () {
+  //     return false;
+  //   }
 
-    this.router.events.subscribe((evt) => {
-      if (evt instanceof NavigationEnd) {
-         // trick the Router into believing it's last link wasn't previously loaded
-         this.router.navigated = false;
+  //   this.router.events.subscribe((evt) => {
+  //     if (evt instanceof NavigationEnd) {
+  //        // trick the Router into believing it's last link wasn't previously loaded
+  //        this.router.navigated = false;
 
-         // if you need to scroll back to top, here is the right place
+  //        // if you need to scroll back to top, here is the right place
 
-         window.scrollTo(0, 0);
+  //        window.scrollTo(0, 0);
 
-         location.reload();
-
-
+  //        location.reload();
          
-      }
+  //     }
 
-  });
+  // });
     this.from=this.ar.snapshot.url[1].path;
     this.id = this.ar.snapshot.params.id;
+
+    
 
     this.mySubscription1 = this.video.getYtlink(this.id).subscribe(
       data => {

@@ -31,7 +31,9 @@ export class CardComponent implements OnInit {
 
 
   onSelectId(id:String){
-    this.router.navigateByUrl("tv/"+id);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['tv/'+id]);
+  }); 
     // if(this.from === "tv"){
     //   this.router.navigateByUrl("tvs/tv/"+id);
     // }
