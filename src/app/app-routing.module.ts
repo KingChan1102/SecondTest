@@ -25,6 +25,7 @@ const routes: Routes = [
   {path:"tv/:id",component:DetailsComponent},
   {path:"tvs/ptv/:id",component:DetailsComponent},
   {path:'',redirectTo:'/Login',pathMatch:'full'},
+  {path:'/',redirectTo:'/Login',pathMatch:'full'},
   {path:'**',component:PageNotFoundComponent}
 ];
 
