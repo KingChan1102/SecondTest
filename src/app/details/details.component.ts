@@ -21,6 +21,8 @@ export class DetailsComponent implements OnInit {
   epidata: any[];
   id: any;
   from: any;
+  favs=[];
+  favIds=[]
 
   constructor(private ar: ActivatedRoute, private video: YtlinksService, private sanitizer: DomSanitizer, private router: Router,private extras:ExtrasService) {
 
@@ -142,7 +144,21 @@ export class DetailsComponent implements OnInit {
   }
 
   isInFavs(id:String):boolean{
+    // this.extras.getFavShows(localStorage.getItem("username")).subscribe(
+    //   res=>{
+    //     this.favs=res["message"].shows
+    //     for(let s of this.favs){
+    //       this.favIds.push(s.id);
+    //     }
+    //   },
+    //   err=>{
+    //     console.log("err is ",err)
+    //   }
+    // )
+
+    // return this.favIds.includes(id);
     return this.extras.isFav(id);
+
   }
 
   isInWatchLater(id:String):boolean{
@@ -150,7 +166,24 @@ export class DetailsComponent implements OnInit {
   }
   
   addToFavs(show:any){
-    this.extras.addToFavs(show);
+    let username=localStorage.getItem("username");
+    let newUserProductObj={username,show}
+    console.log(newUserProductObj);
+    // this.extras.addToFavs(show);
+    this.extras.addToFavs2(newUserProductObj).subscribe(
+      res=>{
+        alert(res['message'])
+        this.extras.update();
+        this.isInFavs(show.id)
+      },
+      err=>{
+        console.log("err is ",err)
+      }
+    )
+
+    // this.extras.update();
+    // this.isInFavs(show.id)
+
   }
 
   addToWatchLater(show:any){
@@ -158,9 +191,17 @@ export class DetailsComponent implements OnInit {
   }
 
   deleteFavs(id:String){
-    this.extras.deleteFromFavs(id);
+    this.extras.deleteFromFavs(id).subscribe(
+      res=>{
+        console.log(res["message"])
+        this.extras.update();
+        this.isInFavs(id)
+      },
+      err=>{
+        console.log("err is",err)
+      }
+    );
   }
-
   deleteWatchLater(id:String){
     this.extras.deleteFromWatchLater(id);
   }

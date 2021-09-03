@@ -1,7 +1,33 @@
 <div class="container mt-3 mb-3">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 g-4">
-            <div class="col" *ngFor="let show of (favShows ) | paginate: { itemsPerPage: 12, currentPage: p }">
-                <app-card [showObj]=show></app-card>
+            <div class="col" *ngFor="let showObj of (favShows ) | paginate: { itemsPerPage: 12, currentPage: p }">
+                <!-- <app-card [showObj]=show></app-card> -->
+                <div class="card h-100">
+                    <img src="{{showObj.image}}" class="card-img-top" alt="..." height="330vh">
+                    <div class="card-body">
+                        <h5 class="card-title">{{showObj.title}}</h5>
+                        <p class="card-text">
+                            Full Title: {{showObj.fullTitle}}
+                        </p>
+                        <p class="card-text">
+                            IMDb rating: {{showObj.imDbRating}}
+                        </p>
+                        <p class="card-text">
+                            Year: {{showObj.year}}
+                        </p>
+                
+                    </div>
+                    <div class="card-footer d-flex justify-content-evenly p-0 m-0" style="background: none; border: none;">
+                        <!-- <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInWatchLater(showObj.id) === false" (click)="addToWatchLater(showObj)">Watch Later</button>
+                        <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInWatchLater(showObj.id) === true" (click)="deleteWatchLater(showObj.id)">remove wl</button> -->
+                        <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInFavs(showObj.id) === false"
+                            (click)="addToFavs(showObj)">Add to Favs</button>
+                        <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInFavs(showObj.id) === true"
+                            (click)="deleteFavs(showObj.id)">delFavs</button>
+                        <button type="button" class="btn btn-primary btn-sm shadow-none" (click)="onSelectId(showObj.id)">Read
+                            More</button>
+                    </div>
+                </div>
             </div>
         </div>
 </div>

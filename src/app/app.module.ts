@@ -1,9 +1,10 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,14 @@ import { FavsComponent } from './favs/favs.component';
 import { WatchLaterComponent } from './watch-later/watch-later.component';
 import { TvsComponent } from './tvs/tvs.component';
 import { PopTvComponent } from './pop-tv/pop-tv.component';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -28,6 +37,10 @@ import { PopTvComponent } from './pop-tv/pop-tv.component';
     WatchLaterComponent,
     TvsComponent,
     PopTvComponent,
+    LoginComponent,
+    SignUpComponent,
+    UserprofileComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,10 +48,14 @@ import { PopTvComponent } from './pop-tv/pop-tv.component';
     HttpClientModule,
     NgxPaginationModule,
     CarouselModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+  
     
   ],
-  providers: [],
+  providers: [
+    {provide :LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

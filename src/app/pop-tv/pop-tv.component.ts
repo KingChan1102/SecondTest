@@ -13,6 +13,7 @@ export class PopTvComponent implements OnInit {
   mySubscription:Subscription;
   shows:any;
   p=1;
+  sorter="Rating";
 
   constructor(private topTv:TratedService) { }
 
@@ -28,14 +29,22 @@ export class PopTvComponent implements OnInit {
   }
 
   sortByYearOld(){
+    this.sorter="Old";
     this.shows.sort(function(a,b) {return Number(a.year) - Number(b.year)});
   }
 
   sortByYearNew(){
+    this.sorter="New"
     this.shows.sort(function(a,b) {return Number(b.year) - Number(a.year)})
   }
 
+  sortByRating(){
+    this.sorter="Rating"
+    this.shows.sort(function(a,b) {return Number(b.imDbRating) - Number(a.imDbRating)})
+  }
+
   sortByAlpha(){
+    this.sorter="A-Z"
     this.shows.sort(function(a,b) {
       if(a.title < b.title){
         return -1;

@@ -4,6 +4,7 @@ import { ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Router } from '@angular/router';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -13,15 +14,15 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'secondApp';
 
-  constructor(private ar: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router) {
+  constructor(private ar: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router,public us:UserService) {
 
-    console.log("hi")
-    
-  //  
+  }
+
+  userLogout(){
+    localStorage.clear();
+    this.us.userLoginStatus=false;
   }
 
 
-  // ngOnInit(){
-
-  // }
+  
 }

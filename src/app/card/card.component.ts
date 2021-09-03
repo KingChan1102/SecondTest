@@ -22,6 +22,8 @@ export class CardComponent implements OnInit {
   detail:any;
   videoPlayer:any;
   from:any;
+  favs=[];
+  favIds=[]
 
   constructor(private router:Router,private extras:ExtrasService,private ar:ActivatedRoute) { }
 
@@ -45,6 +47,7 @@ export class CardComponent implements OnInit {
   }
 
   isInFavs(id:String):boolean{
+    // console.log(this.extras.isFav(id))
     return this.extras.isFav(id);
   }
 
@@ -53,21 +56,46 @@ export class CardComponent implements OnInit {
   }
   
   addToFavs(show:any){
-    this.extras.addToFavs(show);
+    let username=localStorage.getItem("username");
+    let newUserProductObj={username,show}
+    console.log(newUserProductObj);
+    // this.extras.addToFavs(show);
+    this.extras.addToFavs2(newUserProductObj).subscribe(
+      res=>{
+        alert(res['message'])
+        this.extras.update();
+        this.isInFavs(show.id)
+      },
+      err=>{
+        console.log("err is ",err)
+      }
+    )
+
+    // this.extras.update();
+    // this.isInFavs(show.id)
+
   }
 
   addToWatchLater(show:any){
     this.extras.addToWatchLater(show);
   }
 
-  deleteFavs(id:String){
-    this.extras.deleteFromFavs(id);
+  deleteFavs(show){
+    this.extras.deleteFromFavs(show.id).subscribe(
+      res=>{
+        alert(res["message"])
+        this.extras.update();
+        this.isInFavs(show.id);
+      },
+      err=>{
+        console.log("err is",err)
+      }
+    );
   }
 
   deleteWatchLater(id:String){
     this.extras.deleteFromWatchLater(id);
   }
 
-  
 
 }
