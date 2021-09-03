@@ -11,5 +11,8 @@ const userApi=require("./APIS/user-api")
 app.use('/user',userApi)
 
 
-const port=process.env.PORT || 8080
-app.listen(port,()=>{console.log(`listening to port ${port}`)})
+// const port=process.env.PORT || 8080
+// app.listen(port,()=>{console.log(`listening to port ${port}`)})
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
