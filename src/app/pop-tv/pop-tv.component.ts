@@ -62,6 +62,15 @@ export class PopTvComponent implements OnInit {
     })
   }
 
+  onPageChange(page: number){
+    this.p=page;
+    window.scrollTo({
+      top:0,
+      left:0,
+      behavior: 'smooth'
+    })
+  }
+
   ngOnDestroy(){
     this.mySubscription.unsubscribe();
   }

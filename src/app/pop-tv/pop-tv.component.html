@@ -30,5 +30,8 @@
     </div>
 </div>
 <div class="text-center mt-2">
-    <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls class="my-pagination" (pageChange)="onPageChange($event)"
+    previousLabel="<<"
+    nextLabel=">>"
+    maxSize="5"></pagination-controls>
 </div>
