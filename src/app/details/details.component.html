@@ -8,11 +8,11 @@
         <!-- <button type="button" class="btn btn-secondary shadow-none" *ngIf="isInWatchLater(details.id) === false" (click)="addToWatchLater(details)">Watch Later</button>
         <button type="button" class="btn btn-secondary shadow-none" *ngIf="isInWatchLater(details.id) === true" (click)="deleteWatchLater(details.id)">remove wl</button> -->
         <button type="button" class="btn btn-danger shadow-none" *ngIf="isInFavs(details.id) === false"
-            (click)="addToFavs(details)">Add to Favs</button>
+            (click)="addToFavs(details)"><i class="far fa-heart"></i>Add to Favs</button>
         <button type="button" class="btn btn-danger shadow-none" *ngIf="isInFavs(details.id) === true"
-            (click)="deleteFavs(details.id)">delFavs</button>
+            (click)="deleteFavs(details.id)"><i class="fas fa-heart"></i>delFavs</button>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 d-flex">
         <span class="text-muted fs-4">IMDb Rating: &nbsp;</span>
         <span class="fs-4">{{details.imDbRating}} &nbsp;</span>
         <span class="text-muted fs-4">IMDb Votes:  &nbsp;</span>

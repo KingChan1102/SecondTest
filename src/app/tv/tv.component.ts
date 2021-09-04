@@ -19,6 +19,7 @@ export class TvComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     AOS.init({
       offset: 150,
       duration:1000,
@@ -59,6 +60,15 @@ export class TvComponent implements OnInit {
         return 1;
       }
       
+    })
+  }
+
+  onPageChange(page: number){
+    this.p=page;
+    window.scrollTo({
+      top:0,
+      left:0,
+      behavior: 'smooth'
     })
   }
 

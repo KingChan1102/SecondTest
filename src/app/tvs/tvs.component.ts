@@ -12,7 +12,9 @@ export class TvsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
     AOS.init()
+
   }
 
 }

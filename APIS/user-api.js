@@ -148,7 +148,7 @@ userApi.put("/delete-favs/:username",expressErrorHandler(async (req,res,next)=>{
     let x=await userFavShowObj.updateOne({username:un},
         {$pull:{shows:{id:xshowId}}},
         {multi:true})
-    console.log(await userFavShowObj.findOne({username:un}))
+    // console.log(await userFavShowObj.findOne({username:un}))
     res.send({message:"Sucessful deletion"})
     
     
