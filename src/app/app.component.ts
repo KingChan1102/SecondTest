@@ -21,6 +21,7 @@ export class AppComponent {
   userLogout(){
     localStorage.clear();
     this.us.userLoginStatus=false;
+    this.router.navigateByUrl("Login")
   }
 
 
