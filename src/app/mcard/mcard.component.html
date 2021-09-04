@@ -1,0 +1,36 @@
+<div class="card h-100">
+    <img src="{{showObj.image}}" class="card-img-top" alt="..." height="330vh">
+    <div class="card-body">
+        <h5 class="card-title">{{showObj.title}}</h5>
+        <p class="card-text">
+            Full Title: {{showObj.fullTitle}}
+        </p>
+        <p class="card-text">
+            IMDb rating: {{showObj.imDbRating}}
+        </p>
+        <p class="card-text">
+            Year: {{showObj.year}}
+        </p>
+
+    </div>
+    <div class="card-footer d-flex justify-content-evenly p-0 m-0" style="background: none; border: none;">
+        <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInFavs(showObj.id) === false"
+            (click)="addToFavs(showObj)"><i class="far fa-heart"></i>Add to Favs</button>
+        <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInFavs(showObj.id) === true"
+            (click)="deleteFavs(showObj)"><i class="fas fa-heart"></i>
+
+            delFavs</button>
+        <button type="button" class="btn btn-primary btn-sm shadow-none" (click)="onSelectId(showObj.id)"><i class="fas fa-book-open"></i>
+
+            Read
+            More</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+<router-outlet></router-outlet>

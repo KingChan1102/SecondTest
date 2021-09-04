@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-md-3">
+        <h3>{{details.title}}</h3>
+        <span class="text-muted">Movies . </span>
+        <span>{{details.year}}</span>
+    </div>
+    <div class="col-md-5 d-flex justify-content-evenly">
+        <button type="button" class="btn btn-danger shadow-none" *ngIf="isInFavs(details.id) === false"
+            (click)="addToFavs(details)"><i class="far fa-heart"></i>Add to Favs</button>
+        <button type="button" class="btn btn-danger shadow-none" *ngIf="isInFavs(details.id) === true"
+            (click)="deleteFavs(details.id)"><i class="fas fa-heart"></i>delFavs</button>
+    </div>
+    <div class="col-md-4 d-flex">
+        <span class="text-muted fs-4">IMDb Rating: &nbsp;</span>
+        <span class="fs-4">{{details.imDbRating}} &nbsp;</span>
+        <span class="text-muted fs-4">IMDb Votes: &nbsp;</span>
+        <span class="fs-4">{{details.imDbRatingVotes}}</span>
+    </div>
+</div>
+
+<div class="container d-block mx-auto mb-3">
+
+    <div class="row justify-content-md-center">
+        <div class="col-md-4 mb-2">
+
+            <div data-aos="fade-right" class="ratio" style="--bs-aspect-ratio: 116.25%;">
+                <img [src]="details.image" alt="" id="poster" class="d-block">
+            </div>
+        </div>
+        <div class="col-md-8 mx-auto">
+            <div data-aos="fade-left" class="ratio ratio-16x9">
+                <iframe class="e2e-iframe-trusted-src trailer" [src]="videoPlayer" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <span class="fw-bolder">Geners: </span>
+        <div *ngIf="details.genreList != null">
+            <span class="fw-bolder"></span>
+            <span *ngFor="let genere of details.genreList">
+                {{genere.key}} &nbsp;
+            </span>
+        </div>
+
+        <div>
+            <span class="fw-bolder">Plot: </span>
+            <span>{{details.plot}}</span>
+        </div>
+
+        <div>
+            <span class="fw-bolder">Creator: </span>
+            <span>{{details.plot}}</span>
+        </div>
+
+        <div>
+            <span class="fw-bolder">Stars: </span>
+            <span>{{details.stars}}</span>
+        </div>
+    </div>
+
+
+    <div class="fs-3 fw-bolder mt-4">
+        Recomendations :
+    </div>
+
+    <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let slide of details.similars">
+
+
+            <ng-template carouselSlide [id]="slide.id">
+                <div style="height: 600px;">
+                <app-card [showObj]=slide></app-card>
+            </div>
+            </ng-template>
+
+        
+        </ng-container>
+
+</owl-carousel-o>
+
+</div>
+<router-outlet></router-outlet>

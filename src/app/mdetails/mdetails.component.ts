@@ -6,13 +6,15 @@ import { YtlinksService } from '../ytlinks.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Router } from '@angular/router';
 import {ExtrasService} from '../extras.service';
+import {Extras2Service} from '../extras2.service'
+
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  selector: 'app-mdetails',
+  templateUrl: './mdetails.component.html',
+  styleUrls: ['./mdetails.component.css']
 })
-export class DetailsComponent implements OnInit {
+export class MdetailsComponent implements OnInit {
   mySubscription1: Subscription;
   mySubscription2: Subscription;
   mySubscription3: Subscription;
@@ -24,19 +26,13 @@ export class DetailsComponent implements OnInit {
   favs=[];
   favIds=[]
 
-  constructor(private ar: ActivatedRoute, private video: YtlinksService, private sanitizer: DomSanitizer, private router: Router,private extras:ExtrasService) {
-
-
-    
-  }
+  constructor(private ar: ActivatedRoute, private video: YtlinksService, private sanitizer: DomSanitizer, private router: Router,private extras:Extras2Service) { }
 
   ngOnInit(): void {
     window.scrollTo(0,0);
 
     this.from=this.ar.snapshot.url[1].path;
     this.id = this.ar.snapshot.params.id;
-
-    
 
     this.mySubscription1 = this.video.getYtlink(this.id).subscribe(
       data => {
@@ -54,9 +50,6 @@ export class DetailsComponent implements OnInit {
         console.log("err is ", err);
       }
     );
-
-
-
   }
 
   customOptions: OwlOptions = {
@@ -85,36 +78,12 @@ export class DetailsComponent implements OnInit {
     nav: true,
   };
 
-  totalSeasons(): number {
-    let seasons = this.details.tvSeriesInfo.seasons.length;
-    console.log(seasons);
-    return seasons;
-  }
-
-  getEpisodes(season: String) {
-    this.video.getEpisodes(this.id, season).subscribe(
-      data2 => {
-        this.epidata = data2;
-        console.log(this.epidata);
-      },
-      err => {
-        console.log("err is", err);
-      }
-    )
-  }
-
-  getSeasonArray() {
-    return this.details.tvSeriesInfo.seasons;
-  }
-
   isInFavs(id:String):boolean{
     
     return this.extras.isFav(id);
 
   }
 
-  
-  
   addToFavs(show:any){
     let username=localStorage.getItem("username");
     let newUserProductObj={username,show}
@@ -133,8 +102,6 @@ export class DetailsComponent implements OnInit {
    
   }
 
-  
-
   deleteFavs(id:String){
     this.extras.deleteFromFavs(id).subscribe(
       res=>{
@@ -148,13 +115,8 @@ export class DetailsComponent implements OnInit {
     );
   }
   
-
-  
-
-
   ngOnDestroy() {
     this.mySubscription1.unsubscribe();
     this.mySubscription2.unsubscribe();
   }
-
 }

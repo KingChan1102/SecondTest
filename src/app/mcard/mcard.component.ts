@@ -1,21 +1,21 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TratedService } from '../trated.service';
 import { YtlinksService } from '../ytlinks.service';
 import {DomSanitizer} from '@angular/platform-browser'
 import { Router } from '@angular/router';
 import {ExtrasService} from '../extras.service';
+import {Extras2Service} from '../extras2.service';
 import { ActivatedRoute, NavigationEnd } from '@angular/router';
 
-
-
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  selector: 'app-mcard',
+  templateUrl: './mcard.component.html',
+  styleUrls: ['./mcard.component.css']
 })
-export class CardComponent implements OnInit {
-  @Input() showObj:any;
+export class McardComponent implements OnInit {
+
+  @Input() showObj:any
 
   mySubscription:Subscription;
   mySubscription1:Subscription;
@@ -25,16 +25,16 @@ export class CardComponent implements OnInit {
   favs=[];
   favIds=[]
 
-  constructor(private router:Router,private extras:ExtrasService,private ar:ActivatedRoute) { }
+  constructor(private router:Router,private extras:Extras2Service,private ar:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.from=this.ar.snapshot.url[0].path;
-  }
 
+  }
 
   onSelectId(id:String){
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['tv/'+id]);
+      this.router.navigate(['tmovies/'+id]);
   }); 
     
   }
@@ -43,8 +43,6 @@ export class CardComponent implements OnInit {
     return this.extras.isFav(id);
   }
 
-  
-  
   addToFavs(show:any){
     let username=localStorage.getItem("username");
     let newUserProductObj={username,show}
@@ -61,8 +59,6 @@ export class CardComponent implements OnInit {
     )
   }
 
-  
-
   deleteFavs(show){
     this.extras.deleteFromFavs(show.id).subscribe(
       res=>{
@@ -75,8 +71,5 @@ export class CardComponent implements OnInit {
       }
     );
   }
-
-  
-
 
 }

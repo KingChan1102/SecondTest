@@ -16,5 +16,13 @@ export class TratedService {
   getPopularTv():Observable <any>{
     return this.hc.get <any>('https://imdb-api.com/en/API/MostPopularTVs/k_ee883y1o')
   }
+
+  getTopMovies():Observable<any>{
+    return this.hc.get <any>("https://imdb-api.com/en/API/Top250Movies/k_ee883y1o")
+  }
+
+  getPopularMovies():Observable<any>{
+    return this.hc.get <any>("https://imdb-api.com/en/API/MostPopularMovies/k_ee883y1o")
+  }
   
 }

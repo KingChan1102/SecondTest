@@ -5,8 +5,6 @@
         <span>{{details.year}}</span>
     </div>
     <div class="col-md-5 d-flex justify-content-evenly">
-        <!-- <button type="button" class="btn btn-secondary shadow-none" *ngIf="isInWatchLater(details.id) === false" (click)="addToWatchLater(details)">Watch Later</button>
-        <button type="button" class="btn btn-secondary shadow-none" *ngIf="isInWatchLater(details.id) === true" (click)="deleteWatchLater(details.id)">remove wl</button> -->
         <button type="button" class="btn btn-danger shadow-none" *ngIf="isInFavs(details.id) === false"
             (click)="addToFavs(details)"><i class="far fa-heart"></i>Add to Favs</button>
         <button type="button" class="btn btn-danger shadow-none" *ngIf="isInFavs(details.id) === true"

@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="text-center display-2 text-warning">Top Shows</h2>
+    <h2 class="text-center display-2 text-warning">Top Movies</h2>
     <div class="btn-group w-25 mt-3 mb-3" role="group">
         <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
             aria-expanded="false">
@@ -18,7 +18,7 @@
     
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 " >
         <div class="col" data-aos="zoom-in" *ngFor="let showObj of (shows ) | paginate: { itemsPerPage: 12, currentPage: p }">
-            <app-card [showObj]=showObj ></app-card>
+            <app-mcard [showObj]=showObj></app-mcard>
         </div>
     </div>
 </div>

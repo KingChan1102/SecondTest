@@ -14,7 +14,6 @@ import { DetailsComponent } from './details/details.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { SortPipe } from './sort.pipe';
 import { FavsComponent } from './favs/favs.component';
-import { WatchLaterComponent } from './watch-later/watch-later.component';
 import { TvsComponent } from './tvs/tvs.component';
 import { PopTvComponent } from './pop-tv/pop-tv.component';
 import { LoginComponent } from './login/login.component';
@@ -22,6 +21,12 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MoviesComponent } from './movies/movies.component';
+import { TopMoviesComponent } from './top-movies/top-movies.component';
+import { PopMoviesComponent } from './pop-movies/pop-movies.component';
+import { McardComponent } from './mcard/mcard.component';
+import { MdetailsComponent } from './mdetails/mdetails.component';
+import { FavmComponent } from './favm/favm.component';
 
 
 
@@ -34,13 +39,18 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     DetailsComponent,
     SortPipe,
     FavsComponent,
-    WatchLaterComponent,
     TvsComponent,
     PopTvComponent,
     LoginComponent,
     SignUpComponent,
     UserprofileComponent,
     PageNotFoundComponent,
+    MoviesComponent,
+    TopMoviesComponent,
+    PopMoviesComponent,
+    McardComponent,
+    MdetailsComponent,
+    FavmComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WatchLaterComponent } from './watch-later.component';
+import { McardComponent } from './mcard.component';
 
-describe('WatchLaterComponent', () => {
-  let component: WatchLaterComponent;
-  let fixture: ComponentFixture<WatchLaterComponent>;
+describe('McardComponent', () => {
+  let component: McardComponent;
+  let fixture: ComponentFixture<McardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WatchLaterComponent ]
+      declarations: [ McardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WatchLaterComponent);
+    fixture = TestBed.createComponent(McardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

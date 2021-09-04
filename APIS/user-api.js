@@ -22,6 +22,7 @@ mc.connect(databaseUrl,{useNewUrlParser:true,useUnifiedTopology:true},(err,clien
         databaseObj=client.db("vnrdb2021")
         userCollectionObj=databaseObj.collection("usercollection")
         userFavShowObj=databaseObj.collection("usershowcollection")
+        userFavMovieObj=databaseObj.collection("usermoviecollection")
 
         console.log("connected to user database")
     }
@@ -100,9 +101,6 @@ userApi.post("/login",expressErrorHandler(async(req,res,next)=>{
 }))
 
 userApi.post("/add-to-favs",expressErrorHandler(async (req,res,next)=>{
-
-
-
     let newShowObj=req.body;
     
     let userCartObj=await userFavShowObj.findOne({username:newShowObj.username})
@@ -113,7 +111,6 @@ userApi.post("/add-to-favs",expressErrorHandler(async (req,res,next)=>{
         shows.push(newShowObj.show)
     
         let newUserCartObj={username:newShowObj.username,shows}
-        // console.log(newUserCartObj);
 
         await userFavShowObj.insertOne(newUserCartObj)
         res.send({message:"New Show added"})
@@ -121,11 +118,9 @@ userApi.post("/add-to-favs",expressErrorHandler(async (req,res,next)=>{
     else{
 
         userCartObj.shows.push(newShowObj.show)
-        //update
         await userFavShowObj.updateOne({username:newShowObj.username},{$set:{...userCartObj}})
         res.send({message:"New Show added"})
     }
-    // console.log(newShowObj);
     }));
 
 userApi.get("/show-favs/:username",expressErrorHandler(async (req,res,next)=>{
@@ -150,14 +145,55 @@ userApi.put("/delete-favs/:username",expressErrorHandler(async (req,res,next)=>{
         {multi:true})
     // console.log(await userFavShowObj.findOne({username:un}))
     res.send({message:"Sucessful deletion"})
-    
-    
-
-
-    
-
 }))
 
+userApi.post("/add-to-favm",expressErrorHandler(async (req,res,next)=>{
+    let newMovieObj=req.body;
+    
+    let userCartObj=await userFavMovieObj.findOne({username:newMovieObj.username})
+    
+    //if not existed
+    if(userCartObj===null){
+        let movies=[];
+        movies.push(newMovieObj.show)
+    
+        let newUserCartObj={username:newMovieObj.username,movies}
+
+        await userFavMovieObj.insertOne(newUserCartObj)
+        res.send({message:"New Movie added"})
+    }
+    else{
+
+        userCartObj.movies.push(newMovieObj.show)
+        await userFavMovieObj.updateOne({username:newMovieObj.username},{$set:{...userCartObj}})
+        res.send({message:"New Movie added"})
+    }
+    }));
+
+    userApi.get("/show-movies/:username",expressErrorHandler(async (req,res,next)=>{
+        let un=req.params.username;
+    
+        let userFavObj = await userFavMovieObj.findOne({username:un})
+    
+        if (userFavObj ===null){
+            res.send({message: "No shows Yet"})
+        }
+        else{
+            res.send({message:userFavObj})
+        }
+    }))
+
+
+    userApi.put("/delete-movies/:username",expressErrorHandler(async (req,res,next)=>{
+        let un=req.params.username;
+        let xshowId=req.body.id;
+        console.log(xshowId)
+        let x=await userFavMovieObj.updateOne({username:un},
+            {$pull:{movies:{id:xshowId}}},
+            {multi:true})
+        // console.log(await userFavShowObj.findOne({username:un}))
+        res.send({message:"Sucessful deletion"})
+    }))
 
 
 userApi.use((err,req,res,next)=>{
