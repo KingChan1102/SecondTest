@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TratedService} from "../trated.service";
 import { Subscription } from 'rxjs';
+import AOS from 'aos';
 
 
 @Component({
@@ -18,6 +19,11 @@ export class PopTvComponent implements OnInit {
   constructor(private topTv:TratedService) { }
 
   ngOnInit(): void {
+    AOS.init({
+      offset: 150,
+      duration:1000,
+      mirror:true
+    })
     this.mySubscription=this.topTv.getPopularTv().subscribe(
       data=>{
         this.shows=data.items;

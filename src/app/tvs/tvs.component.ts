@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import AOS from 'aos'
 
 @Component({
   selector: 'app-tvs',
@@ -11,6 +12,7 @@ export class TvsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    AOS.init()
   }
 
 }

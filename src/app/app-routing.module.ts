@@ -18,6 +18,7 @@ const routes: Routes = [
     {path:'',redirectTo:'/tvs/tv',pathMatch:'full'}
   ]},
   {path:"favs",component:FavsComponent},
+  {path:"profile",component:UserprofileComponent},
   {path:"Watch",component:WatchLaterComponent},
   {path:"Login",component:LoginComponent},
   {path:"SignUp",component:SignUpComponent},

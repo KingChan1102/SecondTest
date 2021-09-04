@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TratedService } from '../trated.service';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-tv',
@@ -18,7 +19,11 @@ export class TvComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('hi')
+    AOS.init({
+      offset: 150,
+      duration:1000,
+      mirror:true
+    })
     this.mySubscription=this.topTv.getUsers().subscribe(
       data=>{
         this.shows=data.items;

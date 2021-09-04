@@ -24,7 +24,7 @@
         </select>
     </div> -->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 g-4">
-        <div class="col" *ngFor="let showObj of (shows ) | paginate: { itemsPerPage: 12, currentPage: p }">
+        <div class="col" data-aos="zoom-in" *ngFor="let showObj of (shows ) | paginate: { itemsPerPage: 12, currentPage: p }">
             <app-card [showObj]=showObj></app-card>
         </div>
     </div>
