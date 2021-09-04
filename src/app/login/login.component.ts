@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
           this.user.userLoginStatus=true;
 
           alert("Login Sucessful");
-          this.router.navigateByUrl(`userprofile/${res.username}`);
+          this.router.navigateByUrl("tvs");
         }
         else if(res.message==="Wrong Password"){
           alert("Enter Correct Password");

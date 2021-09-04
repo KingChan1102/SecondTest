@@ -17,10 +17,14 @@
         <!-- <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInWatchLater(showObj.id) === false" (click)="addToWatchLater(showObj)">Watch Later</button>
         <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInWatchLater(showObj.id) === true" (click)="deleteWatchLater(showObj.id)">remove wl</button> -->
         <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInFavs(showObj.id) === false"
-            (click)="addToFavs(showObj)">Add to Favs</button>
+            (click)="addToFavs(showObj)"><i class="far fa-heart"></i>Add to Favs</button>
         <button type="button" class="btn btn-primary btn-sm shadow-none" *ngIf="isInFavs(showObj.id) === true"
-            (click)="deleteFavs(showObj)">delFavs</button>
-        <button type="button" class="btn btn-primary btn-sm shadow-none" (click)="onSelectId(showObj.id)">Read
+            (click)="deleteFavs(showObj)"><i class="fas fa-heart"></i>
+
+            delFavs</button>
+        <button type="button" class="btn btn-primary btn-sm shadow-none" (click)="onSelectId(showObj.id)"><i class="fas fa-book-open"></i>
+
+            Read
             More</button>
     </div>
 </div>

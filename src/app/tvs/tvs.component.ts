@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tvs.component.css']
 })
 export class TvsComponent implements OnInit {
+  un=localStorage.getItem("username");
 
   constructor() { }
 

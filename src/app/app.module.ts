@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { FormsModule } from '@angular/forms';
-
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TvComponent } from './tv/tv.component';
@@ -50,8 +50,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CarouselModule,
     BrowserAnimationsModule,
     FormsModule,
-  
-    
+    LoadingBarRouterModule,
+    LoadingBarModule
   ],
   providers: [
     {provide :LocationStrategy, useClass: HashLocationStrategy}
