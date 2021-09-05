@@ -81,7 +81,6 @@ export class ExtrasService {
   }
 
   isFav(showId:String){
-    console.log("is fav",showId)
 
     return this.favoShows.includes(showId);
   }

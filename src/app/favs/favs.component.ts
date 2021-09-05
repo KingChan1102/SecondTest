@@ -72,7 +72,7 @@ export class FavsComponent implements OnInit {
   deleteFavs(id: String) {
     this.extras.deleteFromFavs(id).subscribe(
       res => {
-        console.log(res["message"])
+        alert(res["message"])
         this.extras.update();
         this.isInFavs(id)
         this.ngOnInit()
