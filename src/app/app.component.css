@@ -3,7 +3,9 @@
 }
 .nav-link{
     color: black !important;
+    font-family: 'Merriweather', serif;
 }
+
 .navbar-toggler:focus{
     box-shadow: none;
 }

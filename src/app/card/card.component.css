@@ -1,9 +1,21 @@
 .card{
-    background-color: rgb(253, 225, 174);
+    background-color: rgb(32, 32, 32);
+    border-color: #ffc107;
 }
 button{
     font-size: small;
+    background-color: black;
+    color:#ffc107 ;
+    border: none;
 }
-p{
+
+button:hover{
+
+    background-color:#ffc107 !important;
+    color: black !important;
+
+}
+p,h5{
+    color: #ffc107;
     margin-bottom: 0.25rem;
 }

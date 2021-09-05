@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-3">
         <h3>{{details.title}}</h3>
         <span class="text-muted">TV Series . </span>
@@ -92,6 +92,155 @@
 
 
     <div class="fs-3 fw-bolder mt-4">
+        Recomendations :
+    </div>
+
+
+    <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let slide of details.similars">
+
+
+                <ng-template carouselSlide [id]="slide.id">
+                    <div style="height: 600px;">
+                    <app-card [showObj]=slide></app-card>
+                </div>
+                </ng-template>
+
+            
+            </ng-container>
+
+    </owl-carousel-o>
+
+
+
+
+
+</div>
+<router-outlet></router-outlet> -->
+
+<div class="row">
+    <div class="col-md-5 m-5">
+        <h3 class="m-4">{{details.title}}</h3>
+        <span class="text-muted m-4">TV Series . </span>
+        <span>{{details.year}}</span>
+    </div>
+    <div class="col-md-4 mt-5 d-flex">
+        <span class="text-muted fs-4">IMDb Rating: &nbsp;</span>
+        <span class="fs-4">{{details.imDbRating}} &nbsp;</span>
+      <br>
+        <span class="text-muted fs-5">IMDb Votes:  &nbsp;</span>
+        <span class="fs-4">{{details.imDbRatingVotes}}</span>
+    </div>
+</div>
+
+<div class="container d-block mx-auto mb-3">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4 mb-2">
+
+            <div class="ratio" style="--bs-aspect-ratio: 116.25%;">
+                <img data-aos="fade-right" [src]="details.image" alt="" id="poster" class="d-block">
+            </div>
+        </div>
+        <div class="col-md-7 mx-auto">
+            <span class="fw-bolder text-primary">Genres: </span>
+        <div *ngIf="details.genreList != null">
+            <span class="fw-bolder"></span>
+            <span *ngFor="let genere of details.genreList">
+                {{genere.key}} &nbsp;
+            </span>
+        </div>
+
+        <div>
+            <span class="fw-bolder text-primary">Plot: 
+                <br> </span>
+            <span>{{details.plot}}</span>
+        </div>
+
+        <div>
+            <span class="fw-bolder text-primary">Creator:
+                <br> </span>
+            <span>{{details.plot}}</span>
+        </div>
+
+        <div>
+            <span class="fw-bolder text-primary">Actors: <br> </span>
+            <span>{{details.stars}}</span>
+        </div>
+
+
+        <div class="col-sm-4 m-4 d-flex justify-content-evenly">
+            <!-- <button type="button" class="btn btn-secondary shadow-none" *ngIf="isInWatchLater(details.id) === false" (click)="addToWatchLater(details)">Watch Later</button>
+            <button type="button" class="btn btn-secondary shadow-none" *ngIf="isInWatchLater(details.id) === true" (click)="deleteWatchLater(details.id)">remove wl</button> -->
+            <button type="button" class="btn btn-danger shadow-none" *ngIf="isInFavs(details.id) === false"
+                (click)="addToFavs(details)"><i class="far fa-heart"></i>Add to Favs</button>
+            <button type="button" class="btn btn-danger shadow-none" *ngIf="isInFavs(details.id) === true"
+                (click)="deleteFavs(details.id)"><i class="fas fa-heart"></i>delFavs</button>
+        </div>
+
+        
+
+
+        </div>
+    </div>
+
+    <div class="m-3">
+
+        <h3 class="fw-bolder">Trailer : </h3>
+        <div class="ratio ratio-16x9">
+            <iframe class="e2e-iframe-trusted-src trailer" [src]="videoPlayer" allowfullscreen></iframe>
+        </div>
+
+        
+    </div>
+
+
+
+    <h3 class="m-3 fw-bolder">Episodes :</h3>
+
+   
+
+    
+
+
+
+
+
+    <div class="accordion accordion-flush" class="bg-danger text-white mt-3" id="accordionFlushExample">
+        <div *ngFor="let season of getSeasonArray(); let ind=index" class="accordion-item">
+            <h2 class="accordion-header" id={{ind}}>
+                <button class="accordion-button collapsed c2" type="button" data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#acr'+ind" aria-expanded="false" aria-controls="flush-collapseOne"
+                    (click)="getEpisodes(season)" >
+                    Season:{{season}}
+                </button>
+            </h2>
+            <div [attr.id]="'acr'+ind" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body c2">
+                    <div *ngIf="epidata != null">
+                        <div *ngFor="let epi of epidata.episodes">
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <img src="{{epi.image}}" alt="" width="100%" height="100%"
+                                        style="box-sizing: border-box;">
+                                </div>
+                                <div class="col-md-8">
+                                    <h4 class="text-primary">{{epi.title}}</h4>
+                                    <p>{{epi.plot}}</p>
+                                    <p class="text-muted">{{epi.released}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- recomendations -->
+
+    <div class="fs-3 fw-bolder m-4">
         Recomendations :
     </div>
 
