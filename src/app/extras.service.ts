@@ -39,7 +39,9 @@ export class ExtrasService {
       res=>{
         
         let favoShowsLength=this.favoShows.length
-        for(let i=0;i<favoShowsLength;i++){
+        if(favoShowsLength===0){this.favoShows.push(res["message"].shows[favoShowsLength].id)}
+        else{
+          for(let i=0;i<favoShowsLength;i++){
           if(i==this.favoShows.length-1){
             try{this.favoShows.push(res["message"].shows[favoShowsLength].id);}
             catch{}
@@ -50,6 +52,9 @@ export class ExtrasService {
         }
         this.favoShows.splice(res["message"].shows.length,(favoShowsLength-res["message"].shows.length))
         console.log(this.favoShows)
+      }
+        
+        
       },
       err=>{
         console.log("err is ",err)
@@ -76,6 +81,7 @@ export class ExtrasService {
   }
 
   isFav(showId:String){
+    console.log("is fav",showId)
 
     return this.favoShows.includes(showId);
   }

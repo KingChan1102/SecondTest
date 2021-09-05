@@ -54,6 +54,7 @@ export class CardComponent implements OnInit {
         alert(res['message'])
         this.extras.update();
         this.isInFavs(show.id)
+        
       },
       err=>{
         console.log("err is ",err)

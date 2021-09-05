@@ -34,18 +34,22 @@ export class Extras2Service {
       res=>{
         
         let favoMoviesLength=this.favoMovies.length
-        for(let i=0;i<favoMoviesLength;i++){
-          if(i==this.favoMovies.length-1){
-            try{this.favoMovies.push(res["message"].movies[favoMoviesLength].id);}
-            catch{}
+        if(favoMoviesLength===0){this.favoMovies.push(res["message"].movies[favoMoviesLength].id)}
+        else{
+          for(let i=0;i<favoMoviesLength;i++){
+            if(i==this.favoMovies.length-1){
+              try{this.favoMovies.push(res["message"].movies[favoMoviesLength].id);}
+              catch{}
+            }
+            else{
+              this.favoMovies[i]=res["message"].movies[i].id
+            }
           }
-          else{
-            this.favoMovies[i]=res["message"].movies[i].id
-          }
+          this.favoMovies.splice(res["message"].movies.length,(favoMoviesLength-res["message"].movies.length))
+          console.log(this.favoMovies)
         }
-        this.favoMovies.splice(res["message"].movies.length,(favoMoviesLength-res["message"].movies.length))
-        console.log(this.favoMovies)
-      },
+        }
+        ,
       err=>{
         console.log("err is ",err)
       }
