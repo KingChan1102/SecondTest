@@ -1,0 +1,11 @@
+Project name: Imdb Lite
+
+Team members names with roll no.
+Chandrashekar - 19071A1204
+Poojitha - 19071A1208
+Megha - 19071A1240
+Kaushika - 19071A1248
+
+Project description: Our project is developed on MEAN technologies. Main objective is get acces to different shows , movies and know more about them.It shows  the top 250 movies and tv shows.
+ It contains a list  and functions of movies and tv shows where we can have our own list of favourite movies and shows. It also shows the descriptions about the shows and movies and recommendations(similar shows).
+Our app gets its data(shows and movies) from imdb-api.com. If the website's server crashes then our website can't be able to receive the data
