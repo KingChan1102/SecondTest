@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if(localStorage.getItem("username") !==null){
-      this.router.navigateByUrl("tvs")
+      this.router.navigateByUrl("tvs") 
     }
   }
 

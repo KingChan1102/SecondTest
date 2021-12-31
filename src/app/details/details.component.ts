@@ -6,6 +6,7 @@ import { YtlinksService } from '../ytlinks.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Router } from '@angular/router';
 import {ExtrasService} from '../extras.service';
+import { CommentsServiceService } from '../comments-service.service';
 
 @Component({
   selector: 'app-details',
@@ -22,19 +23,41 @@ export class DetailsComponent implements OnInit {
   id: any;
   from: any;
   favs=[];
-  favIds=[]
-
-  constructor(private ar: ActivatedRoute, private video: YtlinksService, private sanitizer: DomSanitizer, private router: Router,private extras:ExtrasService) {
+  favIds=[];
+  userObj;
+  boolvar;
+  showComments;
+  constructor(private ar: ActivatedRoute, private video: YtlinksService, private sanitizer: DomSanitizer, private router: Router,private extras:ExtrasService,private commentSer:CommentsServiceService) {
 
 
     
   }
 
   ngOnInit(): void {
+    this.userObj=JSON.parse(localStorage.getItem("UserObj"));
+
+    
+
     window.scrollTo(0,0);
 
     this.from=this.ar.snapshot.url[1].path;
     this.id = this.ar.snapshot.params.id;
+
+    this.commentSer.getComments(this.id).subscribe(
+      res=>{
+        if(res["message"]==='Empty'){
+          this.boolvar=false;
+        }
+        else{
+          this.boolvar=true;
+          this.showComments=res["message"].comments;
+        }
+      },
+      err=>{
+        console.log("err is ",err)
+      }
+    )
+    
 
     
 
@@ -147,6 +170,45 @@ export class DetailsComponent implements OnInit {
       }
     );
   }
+
+  onComment(UserComment){
+
+    console.log(UserComment);
+    let obj={username:this.userObj.username,rating:UserComment.rating,comment:UserComment.comment,id:this.id};
+
+    console.log(obj);
+    this.commentSer.addToComments(obj).subscribe(
+      res=>{
+        console.log(res["message"]);
+        this.getComments();
+      },
+      err=>{
+        console.log("err is",err);
+      }
+    );
+    
+
+  }
+
+
+  getComments(){
+    this.commentSer.getComments(this.id).subscribe(
+      res=>{
+        if(res["message"]==='Empty'){
+          this.boolvar=false;
+        }
+        else{
+          this.boolvar=true;
+          this.showComments=res["message"].comments;
+        }
+      },
+      err=>{
+        console.log("err is ",err)
+      }
+    )
+  }
+
+  
   
 
   

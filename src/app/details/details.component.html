@@ -127,8 +127,8 @@
     <div class="col-md-4 mt-5 d-flex">
         <span class="text-muted fs-4">IMDb Rating: &nbsp;</span>
         <span class="fs-4">{{details.imDbRating}} &nbsp;</span>
-      <br>
-        <span class="text-muted fs-5">IMDb Votes:  &nbsp;</span>
+        <br>
+        <span class="text-muted fs-5">IMDb Votes: &nbsp;</span>
         <span class="fs-4">{{details.imDbRatingVotes}}</span>
     </div>
 </div>
@@ -143,41 +143,41 @@
         </div>
         <div class="col-md-7 mx-auto">
             <span class="fw-bolder text-primary">Genres: </span>
-        <div *ngIf="details.genreList != null">
-            <span class="fw-bolder"></span>
-            <span *ngFor="let genere of details.genreList">
-                {{genere.key}} &nbsp;
-            </span>
-        </div>
+            <div *ngIf="details.genreList != null">
+                <span class="fw-bolder"></span>
+                <span *ngFor="let genere of details.genreList">
+                    {{genere.key}} &nbsp;
+                </span>
+            </div>
 
-        <div>
-            <span class="fw-bolder text-primary">Plot: 
-                <br> </span>
-            <span>{{details.plot}}</span>
-        </div>
+            <div>
+                <span class="fw-bolder text-primary">Plot:
+                    <br> </span>
+                <span>{{details.plot}}</span>
+            </div>
 
-        <div>
-            <span class="fw-bolder text-primary">Creator:
-                <br> </span>
-            <span>{{details.plot}}</span>
-        </div>
+            <div>
+                <span class="fw-bolder text-primary">Creator:
+                    <br> </span>
+                <span>{{details.plot}}</span>
+            </div>
 
-        <div>
-            <span class="fw-bolder text-primary">Actors: <br> </span>
-            <span>{{details.stars}}</span>
-        </div>
+            <div>
+                <span class="fw-bolder text-primary">Actors: <br> </span>
+                <span>{{details.stars}}</span>
+            </div>
 
 
-        <div class="col-sm-4 m-4 d-flex justify-content-evenly">
-            <!-- <button type="button" class="btn btn-secondary shadow-none" *ngIf="isInWatchLater(details.id) === false" (click)="addToWatchLater(details)">Watch Later</button>
+            <div class="col-sm-4 m-4 d-flex justify-content-evenly">
+                <!-- <button type="button" class="btn btn-secondary shadow-none" *ngIf="isInWatchLater(details.id) === false" (click)="addToWatchLater(details)">Watch Later</button>
             <button type="button" class="btn btn-secondary shadow-none" *ngIf="isInWatchLater(details.id) === true" (click)="deleteWatchLater(details.id)">remove wl</button> -->
-            <button type="button" class="btn btn-danger shadow-none" *ngIf="isInFavs(details.id) === false"
-                (click)="addToFavs(details)"><i class="far fa-heart"></i>Add to Favs</button>
-            <button type="button" class="btn btn-danger shadow-none" *ngIf="isInFavs(details.id) === true"
-                (click)="deleteFavs(details.id)"><i class="fas fa-heart"></i>delFavs</button>
-        </div>
+                <button type="button" class="btn btn-danger shadow-none" *ngIf="isInFavs(details.id) === false"
+                    (click)="addToFavs(details)"><i class="far fa-heart"></i>Add to Favs</button>
+                <button type="button" class="btn btn-danger shadow-none" *ngIf="isInFavs(details.id) === true"
+                    (click)="deleteFavs(details.id)"><i class="fas fa-heart"></i>delFavs</button>
+            </div>
 
-        
+
 
 
         </div>
@@ -190,16 +190,16 @@
             <iframe class="e2e-iframe-trusted-src trailer" [src]="videoPlayer" allowfullscreen></iframe>
         </div>
 
-        
+
     </div>
 
 
 
     <h3 class="m-3 fw-bolder">Episodes :</h3>
 
-   
 
-    
+
+
 
 
 
@@ -210,7 +210,7 @@
             <h2 class="accordion-header" id={{ind}}>
                 <button class="accordion-button collapsed c2" type="button" data-bs-toggle="collapse"
                     [attr.data-bs-target]="'#acr'+ind" aria-expanded="false" aria-controls="flush-collapseOne"
-                    (click)="getEpisodes(season)" >
+                    (click)="getEpisodes(season)">
                     Season:{{season}}
                 </button>
             </h2>
@@ -246,20 +246,77 @@
 
 
     <owl-carousel-o [options]="customOptions">
-            <ng-container *ngFor="let slide of details.similars">
+        <ng-container *ngFor="let slide of details.similars">
 
 
-                <ng-template carouselSlide [id]="slide.id">
-                    <div style="height: 600px;">
+            <ng-template carouselSlide [id]="slide.id">
+                <div style="height: 600px;">
                     <app-card [showObj]=slide></app-card>
                 </div>
-                </ng-template>
+            </ng-template>
 
-            
-            </ng-container>
+
+        </ng-container>
 
     </owl-carousel-o>
 
+    <div class="border border-warning rounded">
+
+        <form #ref="ngForm" (ngSubmit)="onComment(ref.value)">
+
+            <div class="row">
+                <div class="col-10">
+                    <!-- <label for="exampleFormControlTextarea1" class="form-label">{{userObj.username}} Comment Here</label> -->
+                    <textarea class="form-control mt-3 ms-2" id="comment" name="comment"
+                        placeholder="{{userObj.username}} Review Here" rows="2" required ngModel></textarea>
+                    
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="rating" class="form-label ms-2">Move dot to rate</label>
+                        </div>
+                        <div class="col-10">
+                            <input type="range" class="form-range" min="0" max="5" step="0.5" value="0" id="rating" name="rating" required ngModel>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <button *ngIf="!ref.form.invalid" class="btn btn-primary align-self-center mt-4" type="submit">Comment</button>
+                    <button *ngIf="ref.form.invalid" class="btn btn-secondary align-self-center mt-4" type="submit" disabled>Comment</button>
+
+                </div>
+            </div>
+        </form>
+
+
+        <h2 class="display-6">Comments</h2>
+
+
+
+
+        <div *ngFor="let c of showComments" >
+            <div class="ms-4">
+                {{c.username}}
+            </div>
+            <div class="ms-4">
+                Rating:{{c.rating}}
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    
+                </div>
+                <div class="col-10">
+                    {{c.comment}}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bg-secondary">
+
+        </div>
+
+    </div>
 
 
 
