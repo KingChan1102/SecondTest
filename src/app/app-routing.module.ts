@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CricticComponent } from './crictic/crictic.component';
 import { DetailsComponent } from './details/details.component';
 import { FavmComponent } from './favm/favm.component';
 import { FavsComponent } from './favs/favs.component';
+import { LazyserComponent } from './lazyser/lazyser.component';
 import { LoginComponent } from './login/login.component';
 import { MdetailsComponent } from './mdetails/mdetails.component';
 import { MoviesComponent } from './movies/movies.component';
@@ -30,11 +32,13 @@ const routes: Routes = [
   {path:"favm",component:FavmComponent},
   {path:"profile",component:UserprofileComponent},
   {path:"Login",component:LoginComponent},
+  {path:"lazy",component:LazyserComponent},
   {path:"SignUp",component:SignUpComponent},
   {path:"userprofile/:username",component:UserprofileComponent},
   {path:"tv/:id",component:DetailsComponent},
   {path:"tmovies/:id",component:MdetailsComponent},
   {path:"tvs/ptv/:id",component:DetailsComponent},
+  {path:"Crictic",component:CricticComponent},
   {path:'',redirectTo:'/Login',pathMatch:'full'},
   {path:'**',component:PageNotFoundComponent}
 ];

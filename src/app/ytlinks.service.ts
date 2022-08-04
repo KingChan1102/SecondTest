@@ -19,4 +19,9 @@ export class YtlinksService {
   getEpisodes(id:String,seasonNum:String):Observable <any>{
     return this.hc.get("https://imdb-api.com/en/API/SeasonEpisodes/k_ee883y1o/"+id+"/"+seasonNum);
   }
+
+  getSearches(searchTerm){
+    console.log("https://imdb-api.com/API/Search/k_ee883y1o/"+searchTerm);
+    return this.hc.get("https://imdb-api.com/en/API/SearchSeries/k_ee883y1o/"+searchTerm);
+  }
 }

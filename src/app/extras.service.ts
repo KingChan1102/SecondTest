@@ -28,10 +28,6 @@ export class ExtrasService {
    }
   private favs=[];
   private favIdsArray=[];
-  
-  
-  
-
   update(){
 
 
@@ -81,7 +77,6 @@ export class ExtrasService {
   }
 
   isFav(showId:String){
-
     return this.favoShows.includes(showId);
   }
 

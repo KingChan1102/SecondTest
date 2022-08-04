@@ -3,8 +3,6 @@ import { Subscription } from 'rxjs';
 import { TratedService } from '../trated.service';
 import AOS from 'aos';
 
-
-
 @Component({
   selector: 'app-pop-movies',
   templateUrl: './pop-movies.component.html',

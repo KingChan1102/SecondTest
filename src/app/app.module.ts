@@ -27,6 +27,10 @@ import { PopMoviesComponent } from './pop-movies/pop-movies.component';
 import { McardComponent } from './mcard/mcard.component';
 import { MdetailsComponent } from './mdetails/mdetails.component';
 import { FavmComponent } from './favm/favm.component';
+import { LazyserComponent } from './lazyser/lazyser.component';
+import { LazySermComponent } from './lazy-serm/lazy-serm.component';
+import { CricticComponent } from './crictic/crictic.component';
+import { EventsComponent } from './events/events.component';
 
 
 
@@ -51,6 +55,10 @@ import { FavmComponent } from './favm/favm.component';
     McardComponent,
     MdetailsComponent,
     FavmComponent,
+    LazyserComponent,
+    LazySermComponent,
+    CricticComponent,
+    EventsComponent,
   ],
   imports: [
     BrowserModule,

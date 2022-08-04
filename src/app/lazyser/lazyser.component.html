@@ -1,0 +1,49 @@
+<form #ref="ngForm" (ngSubmit)="onSearch(ref.value)" class="w-75 mx-auto mt-5">
+
+    <input class="form-control" type="text" placeholder="search" id="search" name="search" ngModel>
+    <button class="btn btn-success" type="submit">search</button>
+</form>
+
+
+<div class="container">
+    <!-- <div *ngFor="let showObj of shows" class="text-light">
+        <div class="card h-100">
+            <img src="{{showObj.image}}" class="card-img-top" alt="..." height="330vh">
+            <div class="card-body">
+                <h5 class="card-title">{{showObj.title}}</h5>
+                
+                <p class="card-text">
+                    Description: {{showObj.description}}
+                </p>
+            </div>
+        </div>
+
+    </div> -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 " >
+        <div class="col" data-aos="zoom-in" *ngFor="let showObj of (shows) | paginate: { itemsPerPage: 12, currentPage: p }">
+            <div class="card h-100">
+                <img src="{{showObj.image}}" class="card-img-top" alt="..." height="330vh">
+                <div class="card-body">
+                    <h5 class="card-title">Title: {{showObj.title}}</h5>
+                    
+                    <p class="card-text">
+                        Description: {{showObj.description}}
+                    </p>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-sm shadow-none" (click)="onSelectId(showObj.id)"><i class="fas fa-book-open"></i>
+                    Read
+                    More</button>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<div class="text-center mt-2">
+    <pagination-controls class="my-pagination" (pageChange)="onPageChange($event)"
+    previousLabel="<<"
+    nextLabel=">>"
+    maxSize="5"></pagination-controls>
+</div>

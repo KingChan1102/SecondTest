@@ -63,7 +63,7 @@ export class DetailsComponent implements OnInit {
 
     this.mySubscription1 = this.video.getYtlink(this.id).subscribe(
       data => {
-        this.videoPlayer = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + data.videoId);
+        this.videoPlayer = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + data.videoId +'?autoplay=1&mute=1');
       },
       err => {
         console.log("err is ", err);
@@ -186,8 +186,6 @@ export class DetailsComponent implements OnInit {
         console.log("err is",err);
       }
     );
-    
-
   }
 
 
@@ -207,12 +205,6 @@ export class DetailsComponent implements OnInit {
       }
     )
   }
-
-  
-  
-
-  
-
 
   ngOnDestroy() {
     this.mySubscription1.unsubscribe();

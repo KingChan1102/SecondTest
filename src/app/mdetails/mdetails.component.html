@@ -205,7 +205,7 @@
 <div class="row">
     <div class="col-md-5 m-5">
         <h3 class="m-4">{{details.title}}</h3>
-        <span class="text-muted m-4">TV Series . </span>
+        <span class="text-muted m-4">Movie. </span>
         <span>{{details.year}}</span>
     </div>
     <div class="col-md-4 mt-5 d-flex">
@@ -305,6 +305,63 @@
 
 
 
+    <div class="border border-warning rounded">
+
+        <form #ref="ngForm" (ngSubmit)="onComment(ref.value)">
+
+            <div class="row">
+                <div class="col-10">
+                    <!-- <label for="exampleFormControlTextarea1" class="form-label">{{userObj.username}} Comment Here</label> -->
+                    <textarea class="form-control mt-3 ms-2" id="comment" name="comment"
+                        placeholder="{{userObj.username}} Review Here" rows="2" required ngModel></textarea>
+                    
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="rating" class="form-label ms-2">Move dot to rate</label>
+                        </div>
+                        <div class="col-10">
+                            <input type="range" class="form-range" min="0" max="5" step="0.5" value="0" id="rating" name="rating" required ngModel>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <button *ngIf="!ref.form.invalid" class="btn btn-primary align-self-center mt-4" type="submit">Comment</button>
+                    <button *ngIf="ref.form.invalid" class="btn btn-secondary align-self-center mt-4" type="submit" disabled>Comment</button>
+
+                </div>
+            </div>
+        </form>
+
+
+        <h2 class="display-6">Comments</h2>
+
+
+
+
+        <div *ngFor="let c of showComments" >
+            <div class="ms-4">
+                {{c.username}}
+            </div>
+            <div class="ms-4">
+                Rating:{{c.rating}}
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    
+                </div>
+                <div class="col-10">
+                    {{c.comment}}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bg-secondary">
+
+        </div>
+
+    </div>
 
 
 </div>

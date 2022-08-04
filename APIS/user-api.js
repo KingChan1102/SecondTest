@@ -150,8 +150,6 @@ userApi.post("/add-to-comments", expressErrorHandler(async (req, res, next) => {
                     }
                 }
             })
-
-
         }
 
         await commentsOfShow.update({ movieId: newCommentObj.id }, {
